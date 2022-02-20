@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
+//styling
+import "./TopTenCrypto.css";
 
 const TopTenCrypto = () => {
   const [data, setData] = useState([]);
@@ -23,14 +27,9 @@ const TopTenCrypto = () => {
       });
   }, []);
 
-  const changeTracker = (tracker) => {
-    if (tracker.includes !== "-") {
-      tracker += `+${tracker}`;
-    }
-  };
-
   return (
     <>
+      <h4 className="global-crypto-stats">Popular Coins</h4>
       <Table striped bordered hover variant="dark" responsive>
         <thead>
           <tr>
@@ -44,14 +43,14 @@ const TopTenCrypto = () => {
         <tbody>
           {data.map((crypto) => (
             <tr key={crypto.name}>
+              <td>{crypto.rank}</td>
               <td>
-                {/* <img src={crypto.iconUrl} alt={crypto.name}></img> */}
-                {crypto.rank}
+                <img src={crypto.iconUrl} className="coin-icon" />
+                <Link to={crypto.name}>{crypto.name}</Link>
               </td>
-              <td>{crypto.name}</td>
               <td>${crypto.price.slice(0, 7)}</td>
               <td>{crypto.change}</td>
-              <td>{crypto.marketCap}</td>
+              <td>{crypto.marketCap.slice(0, 5)}</td>
             </tr>
           ))}
         </tbody>

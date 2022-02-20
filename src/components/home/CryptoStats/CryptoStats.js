@@ -1,4 +1,8 @@
 import { useState, useEffect } from "react";
+import { Table } from "react-bootstrap";
+
+//styling
+import "./CryptoStats.css";
 
 const CryptoStats = () => {
   const [data, setData] = useState([]);
@@ -23,28 +27,33 @@ const CryptoStats = () => {
   }, []);
 
   return (
-    <div>
-      <div>
-        <p>Total Coins</p>
-        <span>{data.totalCoins}</span>
-      </div>
-      <div>
-        <p>Total Exchanges</p>
-        <span>{data.totalExchanges}</span>
-      </div>
-      <div>
-        <p>Total Market Cap</p>
-        <span>{data.totalMarketCap}</span>
-      </div>
-      <div>
-        <p>Total 24h Volume</p>
-        <span>{data.total24hVolume}</span>
-      </div>
-      <div>
-        <p>Total Market</p>
-        <span>{data.totalMarkets}</span>
-      </div>
-    </div>
+    <>
+      <h4 className="global-crypto-stats">Global Crypto Stats</h4>
+      <Table striped bordered hover>
+        <tbody>
+          <tr>
+            <th>Total Coins</th>
+            <td>{data.totalCoins}</td>
+          </tr>
+          <tr>
+            <th>Total Exchanges</th>
+            <td>{data.totalExchanges}</td>
+          </tr>
+          <tr>
+            <th>Total Market Cap</th>
+            <td>${data.totalMarketCap}</td>
+          </tr>
+          <tr>
+            <th>Total 24h Volume</th>
+            <td>${data.total24hVolume}</td>
+          </tr>
+          <tr>
+            <th>Total Market</th>
+            <td>{data.totalMarkets}</td>
+          </tr>
+        </tbody>
+      </Table>
+    </>
   );
 };
 
