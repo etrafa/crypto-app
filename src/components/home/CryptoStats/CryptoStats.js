@@ -21,14 +21,13 @@ const CryptoStats = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setData(data.data);
       });
   }, []);
 
   return (
     <>
-      <h4 className="global-crypto-stats">Global Crypto Stats</h4>
+      <h4 className="global-crypto-stats mt-5 pt-5">Global Crypto Stats</h4>
       <Table striped bordered hover>
         <tbody>
           <tr>

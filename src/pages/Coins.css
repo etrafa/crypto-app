@@ -1,0 +1,11 @@
+.coin-details-icon {
+  max-width: 60px;
+  max-height: 60px;
+}
+
+.coin-details-information {
+  color: #787b86;
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  line-height: 1;
+}

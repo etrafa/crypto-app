@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { Table, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 //styling
@@ -7,6 +8,7 @@ import "./TopTenCrypto.css";
 
 const TopTenCrypto = () => {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(
@@ -46,15 +48,32 @@ const TopTenCrypto = () => {
               <td>{crypto.rank}</td>
               <td>
                 <img src={crypto.iconUrl} className="coin-icon" />
-                <Link to={crypto.name}>{crypto.name}</Link>
+                <Link to={`/crypto/${crypto.uuid}`}>{crypto.name}</Link>
               </td>
               <td>${crypto.price.slice(0, 7)}</td>
-              <td>{crypto.change}</td>
+              <td
+                className={
+                  crypto.change.includes("-")
+                    ? "coin-change-negative"
+                    : "coin-change-positive"
+                }
+              >
+                %{crypto.change}
+              </td>
               <td>{crypto.marketCap.slice(0, 5)}</td>
             </tr>
           ))}
         </tbody>
       </Table>
+      <div className="text-center">
+        <Button
+          variant="secondary"
+          size="lg"
+          onClick={() => navigate("/cryptocurrencies")}
+        >
+          All Coins
+        </Button>
+      </div>
     </>
   );
 };
