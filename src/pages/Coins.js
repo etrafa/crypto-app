@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
+import LineChart from "../components/chart/LineChart";
+import millify from "millify";
+import numeral from "numeral";
 
 //styling
 import "./Coins.css";
 
-const Coins = () => {
+const Coins = ({ endpoint }) => {
   const { uuid } = useParams();
   const [coin, setCoin] = useState([]);
 
@@ -46,9 +49,7 @@ const Coins = () => {
       </Row>
       <Row className="mx-auto text-center mt-5">
         <Col xs={8}>
-          <strong className="display-1 fw-bolder">
-            ${Math.trunc(coin.price)}
-          </strong>
+          <strong className="display-1 fw-bolder">${coin.price}</strong>
         </Col>
         <Col xs={1} className="mt-3">
           <span>(%{coin.change})</span>
@@ -60,7 +61,7 @@ const Coins = () => {
           <p className="coin-details-information">MARKET CAP</p>
         </Col>
         <Col xs={4}>
-          <span className="fw-bold">{coin.marketCap}</span>
+          {/* <span className="fw-bold">{coin.allTimeHigh}</span> */}
           <p className="coin-details-information">ALL TIME HIGH</p>
         </Col>
         <Col xs={4}>
@@ -68,6 +69,7 @@ const Coins = () => {
           <p className="coin-details-information">24H VOL</p>
         </Col>
       </Row>
+      <LineChart endpoint={uuid} />
     </Container>
   );
 };

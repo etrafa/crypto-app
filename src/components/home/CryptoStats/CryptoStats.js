@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
+import millify from "millify";
 
 //styling
 import "./CryptoStats.css";

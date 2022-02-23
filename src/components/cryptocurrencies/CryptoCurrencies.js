@@ -44,7 +44,8 @@ const CryptoCurrencies = () => {
               <td>{crypto.rank}</td>
               <td>
                 <img src={crypto.iconUrl} className="coin-icon" />
-                <Link to={crypto.name}>{crypto.name}</Link>
+                {/* <Link to={crypto.name}>{crypto.name}</Link> */}
+                <Link to={`/crypto/${crypto.uuid}`}>{crypto.name}</Link>
               </td>
               <td>${crypto.price.slice(0, 7)}</td>
               <td

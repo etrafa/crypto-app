@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import millify from "millify";
 
 //styling
 import "./TopTenCrypto.css";
@@ -50,7 +51,7 @@ const TopTenCrypto = () => {
                 <img src={crypto.iconUrl} className="coin-icon" />
                 <Link to={`/crypto/${crypto.uuid}`}>{crypto.name}</Link>
               </td>
-              <td>${crypto.price.slice(0, 7)}</td>
+              <td>${millify(crypto.price)}</td>
               <td
                 className={
                   crypto.change.includes("-")

@@ -8,7 +8,7 @@ import Exchanges from "./components/exchanges/Exchanges";
 import News from "./components/news/News";
 import Coins from "./pages/Coins";
 import Footer from "./components/footer/Footer";
-import Chart from "./components/chart/Chart";
+import LineChart from "./components/chart/LineChart";
 
 function App() {
   return (
