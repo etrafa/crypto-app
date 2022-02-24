@@ -1,14 +1,19 @@
-import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import millify from "millify";
 
-const CryptoCurrencies = () => {
+//styling
+import "./TopTenCrypto.css";
+
+const TopTenCrypto = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     fetch(
-      "https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers=1&orderBy=marketCap&orderDirection=desc&limit=100&offset=0",
+      "https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers=1&orderBy=marketCap&orderDirection=desc&limit=20&offset=0",
       {
         method: "GET",
         headers: {
@@ -26,17 +31,8 @@ const CryptoCurrencies = () => {
 
   return (
     <>
-      <h4 className="text-center fs-2 fw-bold mb-4 mt-4 pb-3 text-muted">
-        Coins Share Live
-      </h4>
-      <Table
-        striped
-        bordered
-        hover
-        variant="dark"
-        responsive
-        className="mx-auto w-50"
-      >
+      <h4 className="global-crypto-stats">Popular Coins</h4>
+      <Table striped bordered hover variant="dark" responsive>
         <thead>
           <tr>
             <th>Rank</th>
@@ -51,11 +47,10 @@ const CryptoCurrencies = () => {
             <tr key={crypto.name}>
               <td>{crypto.rank}</td>
               <td>
-                <img src={crypto.iconUrl} className="coin-icon-table" />
-                {/* <Link to={crypto.name}>{crypto.name}</Link> */}
+                <img src={crypto.iconUrl} className="coin-icon" />
                 <Link to={`/crypto/${crypto.uuid}`}>{crypto.name}</Link>
               </td>
-              <td>${crypto.price.slice(0, 7)}</td>
+              <td>${millify(crypto.price)}</td>
               <td
                 className={
                   crypto.change.includes("-")
@@ -70,8 +65,17 @@ const CryptoCurrencies = () => {
           ))}
         </tbody>
       </Table>
+      <div className="text-center">
+        <Button
+          variant="secondary"
+          size="lg"
+          onClick={() => navigate("/cryptocurrencies")}
+        >
+          All Coins
+        </Button>
+      </div>
     </>
   );
 };
 
-export default CryptoCurrencies;
+export default TopTenCrypto;

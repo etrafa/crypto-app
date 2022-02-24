@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import millify from "millify";
+import numeral from "numeral";
 
 //styling
 import "./CryptoStats.css";
@@ -28,8 +29,10 @@ const CryptoStats = () => {
 
   return (
     <>
-      <h4 className="global-crypto-stats mt-5 pt-5">Global Crypto Stats</h4>
-      <Table striped bordered hover>
+      <h4 className="text-center fs-2 fw-bold mb-4 mt-4 pb-3 text-muted">
+        Global Crypto Stats
+      </h4>
+      <Table striped bordered hover className="w-50 mx-auto">
         <tbody>
           <tr>
             <th>Total Coins</th>
@@ -41,11 +44,15 @@ const CryptoStats = () => {
           </tr>
           <tr>
             <th>Total Market Cap</th>
-            <td>${data.totalMarketCap}</td>
+            <td>
+              {numeral(data.totalMarketCap).format("($ 0.0 a)").toUpperCase()}
+            </td>
           </tr>
           <tr>
             <th>Total 24h Volume</th>
-            <td>${data.total24hVolume}</td>
+            <td>
+              {numeral(data.total24hVolume).format("($ 0.0 a)").toUpperCase()}
+            </td>
           </tr>
           <tr>
             <th>Total Market</th>

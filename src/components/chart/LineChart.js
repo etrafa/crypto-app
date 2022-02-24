@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 
 //import ChartJs library
 import { Line } from "react-chartjs-2";
@@ -8,9 +9,12 @@ const LineChart = (endpoint) => {
   const [chartData, setChartData] = useState([]);
   const [chartSettings, setChartSettings] = useState({});
 
+  const coinPriceData = [];
+  const coinTimeStamp = [];
+
   useEffect(() => {
     fetch(
-      `https://coinranking1.p.rapidapi.com/coin/${endpoint}?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h`,
+      `https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd/history?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=1y`,
       {
         method: "GET",
         headers: {
@@ -22,7 +26,8 @@ const LineChart = (endpoint) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setChartData(data.data.coin.sparkline);
+        console.log(data);
+        setChartData(data);
         //chart settings
         setChartSettings({
           legend: {
@@ -39,19 +44,8 @@ const LineChart = (endpoint) => {
           scales: {
             yAxes: [
               {
-                stacked: false,
-                scaleLabel: {
-                  display: true,
-                  fontColor: "white",
-                  fontSize: 25,
-                },
                 ticks: {
-                  fontColor: "white",
-                  fontSize: 20,
-                  min: 0,
-                },
-                gridLines: {
-                  color: "white",
+                  beginAtZero: true,
                 },
               },
             ],
@@ -110,15 +104,11 @@ const LineChart = (endpoint) => {
     ],
     datasets: [
       {
-        label: "Coin Chart",
-        data: chartData.map((x) => x),
-        backgroundColor: "#bbd9fb",
-        pointBackgroundColor: "#2962ff",
-        borderColor: "#2962ff",
-        pointBorderColor: "#E3EAFF",
-        pointHoverBackgroundColor: "#E3EAFF",
-        pointHoverBorderColor: "#E3EAFF",
-        fill: true,
+        label: "Price in USD",
+        // data: chartData.map((x) => x),
+        backgroundColor: "#0071bd",
+        borderColor: "#0071bd",
+        fill: false,
       },
     ],
   };
@@ -131,7 +121,6 @@ const LineChart = (endpoint) => {
         endpoint={endpoint}
         className="mt-5"
       />
-      {console.log(endpoint)}
     </div>
   );
 };

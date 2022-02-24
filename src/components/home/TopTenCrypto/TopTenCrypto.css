@@ -6,8 +6,13 @@
 }
 
 .coin-icon {
-  max-width: 20px;
-  max-height: 20px;
+  max-width: 70px;
+  max-height: 70px;
+  margin-right: 15px;
+}
+.coin-icon-table {
+  max-width: 40px;
+  max-height: 40px;
   margin-right: 15px;
 }
 

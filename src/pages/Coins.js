@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import LineChart from "../components/chart/LineChart";
-import millify from "millify";
 import numeral from "numeral";
 
 //styling
 import "./Coins.css";
 
-const Coins = ({ endpoint }) => {
+const Coins = (endpoint) => {
   const { uuid } = useParams();
   const [coin, setCoin] = useState([]);
 
@@ -26,8 +25,8 @@ const Coins = ({ endpoint }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setCoin(data.data.coin);
+        console.log(data.data.coin);
       });
   }, [uuid]);
 
@@ -48,8 +47,10 @@ const Coins = ({ endpoint }) => {
         </Col>
       </Row>
       <Row className="mx-auto text-center mt-5">
-        <Col xs={8}>
-          <strong className="display-1 fw-bolder">${coin.price}</strong>
+        <Col xs={9}>
+          <strong className="display-1 fw-bolder">
+            {numeral(coin.price).format("($ 0.000 a)").toUpperCase()}
+          </strong>
         </Col>
         <Col xs={1} className="mt-3">
           <span>(%{coin.change})</span>
@@ -57,19 +58,25 @@ const Coins = ({ endpoint }) => {
       </Row>
       <Row className="mx-auto text-center mt-5">
         <Col xs={4}>
-          <span className="fw-bold">${coin.marketCap}</span>
+          <span className="fw-bold">
+            {numeral(coin.marketCap).format("($ 00.000 a)").toUpperCase()}
+          </span>
           <p className="coin-details-information">MARKET CAP</p>
         </Col>
         <Col xs={4}>
-          {/* <span className="fw-bold">{coin.allTimeHigh}</span> */}
+          {/* <span className="fw-bold">
+            {numeral(coin.allTimeHigh).format("($ 00.000 a)").toUpperCase()}
+          </span> */}
           <p className="coin-details-information">ALL TIME HIGH</p>
         </Col>
         <Col xs={4}>
-          <span className="fw-bold">{coin.marketCap}</span>
+          <span className="fw-bold">
+            {numeral(coin["24hVolume"]).format("($ 00.000 a)").toUpperCase()}
+          </span>
           <p className="coin-details-information">24H VOL</p>
         </Col>
       </Row>
-      <LineChart endpoint={uuid} />
+      {/* <LineChart endpoint={uuid} /> */}
     </Container>
   );
 };
