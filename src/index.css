@@ -8,10 +8,11 @@
 
 a {
   text-decoration: none;
-  color: #fff;
+  color: #171924;
+  font-weight: bold;
 }
 
 a:visited {
   text-decoration: none;
-  color: #fff;
+  color: #171924;
 }

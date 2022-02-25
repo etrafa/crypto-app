@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Table, Button, Card, Row, Container, Col } from "react-bootstrap";
+import { Button, Card, Row, Container, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import millify from "millify";
 
@@ -83,9 +83,11 @@ const TopTenCrypto = () => {
         </Row>
         <Row>
           <Col className="text-center">
-            <Button variant="secondary" className="w-50 mt-5">
-              See All
-            </Button>
+            <Link to="/cryptocurrencies">
+              <Button variant="success" className="w-50 mt-5">
+                See All
+              </Button>
+            </Link>
           </Col>
         </Row>
       </Container>

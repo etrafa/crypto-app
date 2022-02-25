@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 
+//styling
+import "./CryptoCurrencies.css";
+
 const CryptoCurrencies = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
@@ -29,14 +32,7 @@ const CryptoCurrencies = () => {
       <h4 className="text-center fs-2 fw-bold mb-4 mt-4 pb-3 text-muted">
         Coins Share Live
       </h4>
-      <Table
-        striped
-        bordered
-        hover
-        variant="dark"
-        responsive
-        className="mx-auto w-50"
-      >
+      <Table hover responsive className="mx-auto w-50">
         <thead>
           <tr>
             <th>Rank</th>

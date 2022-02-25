@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 
-//import ChartJs library
+// //import ChartJs library
 import { Line } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 
-const LineChart = (endpoint) => {
-  const [chartData, setChartData] = useState([]);
-  const [chartSettings, setChartSettings] = useState({});
+//chart config
+import { config } from "./chartconfig";
 
-  const coinPriceData = [];
-  const coinTimeStamp = [];
+const LineChart = ({ uuid }) => {
+  const [sparklineData, setSparklineData] = useState([]);
+  const sparklinePrice = [];
+  const sparklineTime = [];
 
   useEffect(() => {
     fetch(
-      `https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd/history?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=1y`,
+      `https://coinranking1.p.rapidapi.com/coin/${uuid}/history?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h`,
       {
         method: "GET",
         headers: {
@@ -26,100 +27,34 @@ const LineChart = (endpoint) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        setChartData(data);
-        //chart settings
-        setChartSettings({
-          legend: {
-            display: true,
-            position: "top",
-            fontColor: "white",
-            fontSize: 20,
-            labels: {
-              fontColor: "white",
-              fontSize: 20,
-            },
-          },
-          responsive: true,
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
-                },
-              },
-            ],
-            xAxes: [
-              {
-                stacked: true,
-                scaleLabel: {
-                  display: true,
-                  fontColor: "white",
-                  fontSize: 25,
-                },
-                ticks: {
-                  fontColor: "white",
-                  fontSize: 20,
-                  min: 0,
-                },
-              },
-            ],
-          },
-        });
-      })
-      .catch((err) => {
-        console.error(err);
+        setSparklineData(data.data.history);
       });
-  }, []);
+  }, [uuid]);
 
-  const data = {
-    labels: [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-    ],
-    datasets: [
-      {
-        label: "Price in USD",
-        // data: chartData.map((x) => x),
-        backgroundColor: "#0071bd",
-        borderColor: "#0071bd",
-        fill: false,
-      },
-    ],
-  };
+  {
+    sparklineData.map((items) => {
+      sparklinePrice.push(items.price);
+      sparklineTime.push(items.timestamp);
+    });
+  }
 
   return (
     <div>
       <Line
-        data={data}
-        options={chartSettings}
-        endpoint={endpoint}
-        className="mt-5"
+        options={config}
+        data={{
+          labels: sparklineTime,
+          datasets: [
+            {
+              label: "Price in USD",
+              data: sparklinePrice,
+              borderColor: "rgb(75, 192, 192)",
+              fill: false,
+              cubicInterpolationMode: "monotone",
+              tension: 0.4,
+            },
+          ],
+        }}
       />
     </div>
   );

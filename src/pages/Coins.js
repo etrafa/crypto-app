@@ -7,9 +7,10 @@ import numeral from "numeral";
 //styling
 import "./Coins.css";
 
-const Coins = (endpoint) => {
+const Coins = () => {
   const { uuid } = useParams();
   const [coin, setCoin] = useState([]);
+  const [sparkLine, setSparkLine] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -26,7 +27,6 @@ const Coins = (endpoint) => {
       .then((response) => response.json())
       .then((data) => {
         setCoin(data.data.coin);
-        console.log(data.data.coin);
       });
   }, [uuid]);
 
@@ -65,7 +65,9 @@ const Coins = (endpoint) => {
         </Col>
         <Col xs={4}>
           {/* <span className="fw-bold">
-            {numeral(coin.allTimeHigh).format("($ 00.000 a)").toUpperCase()}
+            {numeral(coin["allTimeHigh"]["price"])
+              .format("($ 00.000 a)")
+              .toString()}
           </span> */}
           <p className="coin-details-information">ALL TIME HIGH</p>
         </Col>
@@ -76,7 +78,7 @@ const Coins = (endpoint) => {
           <p className="coin-details-information">24H VOL</p>
         </Col>
       </Row>
-      {/* <LineChart endpoint={uuid} /> */}
+      <LineChart uuid={uuid} />
     </Container>
   );
 };
