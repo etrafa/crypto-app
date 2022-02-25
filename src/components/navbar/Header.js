@@ -6,7 +6,6 @@ import { BiNews } from "react-icons/bi";
 import { AiOutlineHome } from "react-icons/ai";
 
 //styling
-import "./Header.css";
 
 const Header = () => {
   return (

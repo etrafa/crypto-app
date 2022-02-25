@@ -3,7 +3,6 @@ import { useNavigate, Link } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 
 //styling
-import "./CryptoCurrencies.css";
 
 const CryptoCurrencies = () => {
   const [data, setData] = useState([]);
