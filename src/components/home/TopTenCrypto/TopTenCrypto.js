@@ -10,6 +10,7 @@ import "./TopTenCrypto.css";
 const TopTenCrypto = () => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const apiKey = "c0b39c4213msh5cdd2d51b2131cbp195569jsne86adf3f7408";
 
   useEffect(() => {
     fetch(
@@ -18,15 +19,13 @@ const TopTenCrypto = () => {
         method: "GET",
         headers: {
           "x-rapidapi-host": "coinranking1.p.rapidapi.com",
-          "x-rapidapi-key":
-            "c0b39c4213msh5cdd2d51b2131cbp195569jsne86adf3f7408",
+          "x-rapidapi-key": apiKey,
         },
       }
     )
       .then((response) => response.json())
       .then((data) => {
         setData(data.data.coins);
-        console.log(data.data.coins);
       });
   }, []);
 
@@ -41,8 +40,8 @@ const TopTenCrypto = () => {
         <Row className="gx-5 gy-5 mx-auto text-center justify-content-center">
           {data.map((crypto) => {
             return (
-              <Col xs={12} sm={6} md={4} lg={3}>
-                <Card key={crypto.name} className="w-100 h-100">
+              <Col xs={12} sm={6} md={4} lg={3} key={crypto.name}>
+                <Card className="w-100 h-100">
                   <Card.Img
                     variant="top"
                     className="coin-icon mx-auto pt-4"

@@ -21,7 +21,6 @@ const News = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.value);
         setNews(data.value);
       });
   }, []);
@@ -35,9 +34,9 @@ const News = () => {
           </h4>
         </Row>
         <Row className="gx-5 gy-5 mx-auto">
-          {news.map((news) => {
+          {news.map((news, index) => {
             return (
-              <Col xs={12} sm={6} md={4} lg={3}>
+              <Col xs={12} sm={6} md={4} lg={3} key={index}>
                 <Card className="w-100 h-100">
                   <Card.Img
                     className="img-thumbnail"

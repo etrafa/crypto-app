@@ -11,6 +11,7 @@ const Coins = () => {
   const { uuid } = useParams();
   const [coin, setCoin] = useState([]);
   const [sparkLine, setSparkLine] = useState([]);
+  const apiKey = "c0b39c4213msh5cdd2d51b2131cbp195569jsne86adf3f7408";
 
   useEffect(() => {
     fetch(
@@ -19,8 +20,7 @@ const Coins = () => {
         method: "GET",
         headers: {
           "x-rapidapi-host": "coinranking1.p.rapidapi.com",
-          "x-rapidapi-key":
-            "c0b39c4213msh5cdd2d51b2131cbp195569jsne86adf3f7408",
+          "x-rapidapi-key": apiKey,
         },
       }
     )
