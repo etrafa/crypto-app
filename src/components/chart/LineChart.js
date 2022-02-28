@@ -50,8 +50,6 @@ const LineChart = ({ uuid }) => {
     });
   }
 
-  console.log(sparklineTime);
-
   return (
     <div>
       <DropdownButton
@@ -144,6 +142,7 @@ const LineChart = ({ uuid }) => {
               fill: false,
               cubicInterpolationMode: "monotone",
               tension: 0.4,
+              reverse: true,
             },
           ],
         }}

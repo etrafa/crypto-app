@@ -21,6 +21,8 @@ const News = () => {
     )
       .then((response) => response.json())
       .then((data) => {
+        console.log(data.value);
+
         setNews(data.value);
       });
   }, []);
@@ -41,7 +43,7 @@ const News = () => {
                   <Card.Img
                     className="img-thumbnail"
                     variant="top"
-                    src={news.image.thumbnail.contentUrl}
+                    src={news?.image?.thumbnail?.contentUrl}
                   />
                   <Card.Body className="position-relative">
                     <Card.Title>{news.name}</Card.Title>

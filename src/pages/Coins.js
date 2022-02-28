@@ -40,20 +40,26 @@ const Coins = () => {
             alt={coin.name}
           />
         </Col>
-        <Col xs={10} className="mt-2">
+        <Col xs={8} className="mt-2">
           <h1>
             {coin.name} - {`(${coin.symbol})`}
           </h1>
         </Col>
       </Row>
       <Row className="mx-auto text-center mt-5">
-        <Col xs={9}>
+        <Col>
           <strong className="display-1 fw-bolder">
             {numeral(coin.price).format("($ 0.000 a)").toUpperCase()}
           </strong>
-        </Col>
-        <Col xs={1} className="mt-3">
-          <span>(%{coin.change})</span>
+          <span
+            className={
+              coin.change?.includes("-")
+                ? "coin-change-negative"
+                : "coin-change-positive"
+            }
+          >
+            ( %{coin.change} )
+          </span>
         </Col>
       </Row>
       <Row className="mx-auto text-center mt-5">
@@ -64,11 +70,11 @@ const Coins = () => {
           <p className="coin-details-information">MARKET CAP</p>
         </Col>
         <Col xs={4}>
-          {/* <span className="fw-bold">
-            {numeral(coin["allTimeHigh"]["price"])
+          <span className="fw-bold">
+            {numeral(coin?.["allTimeHigh"]?.["price"])
               .format("($ 00.000 a)")
               .toString()}
-          </span> */}
+          </span>
           <p className="coin-details-information">ALL TIME HIGH</p>
         </Col>
         <Col xs={4}>
