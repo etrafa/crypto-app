@@ -8,6 +8,9 @@ import Chart from "chart.js/auto";
 //chart config
 import { config } from "./chartconfig";
 
+//styling
+import "./Chart.css";
+
 const LineChart = ({ uuid }) => {
   const [sparklineData, setSparklineData] = useState([]);
   const [title, setTitle] = useState("24 Hours");

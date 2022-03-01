@@ -16,22 +16,23 @@ const Header = () => {
         bg="dark"
         variant="dark"
         className="ms-auto"
+        fixed="top"
       >
         <Container>
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="/crypto-app">
             <img
               alt=""
               src={Logo}
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
+              width="35"
+              height="35"
+              className="d-inline-block align-top mx-2"
             />
             CryptoCurrency
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto p-2">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/crypto-app">
                 <AiOutlineHome className="mx-2" />
                 Home
               </Link>

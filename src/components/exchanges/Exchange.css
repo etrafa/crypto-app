@@ -1,0 +1,19 @@
+/* progress-bar bootstrap override options */
+.progress-bar {
+  height: 20px;
+  background-color: #4eaf0a !important;
+}
+
+/* table for small screen view */
+/* exchange and coin-share-live table responsive settings*/
+@media (max-width: 575.98px) {
+  .w-50 {
+    width: 100% !important;
+  }
+  table {
+    width: 100% !important;
+  }
+  .table-hidden-property {
+    display: none;
+  }
+}

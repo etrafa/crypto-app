@@ -32,7 +32,7 @@ const Coins = () => {
 
   return (
     <Container>
-      <Row className="text-center mx-auto mt-3 pt-5">
+      <Row className="text-center mx-auto mt-5 pt-5">
         <Col xs={2}>
           <img
             className="coin-details-icon"
@@ -54,11 +54,11 @@ const Coins = () => {
           <span
             className={
               coin.change?.includes("-")
-                ? "coin-change-negative"
-                : "coin-change-positive"
+                ? "coin-negative-background"
+                : "coin-positive-background"
             }
           >
-            ( %{coin.change} )
+            % {coin.change}
           </span>
         </Col>
       </Row>

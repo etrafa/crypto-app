@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { Button, Card, Row, Container, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import millify from "millify";
+import { Spinner } from "react-bootstrap";
 
 //styling
 import "./TopTenCrypto.css";
 
 const TopTenCrypto = () => {
   const [data, setData] = useState([]);
+
   const navigate = useNavigate();
   const apiKey = "c0b39c4213msh5cdd2d51b2131cbp195569jsne86adf3f7408";
 

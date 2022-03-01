@@ -1,6 +1,13 @@
-.global-crypto-stats {
-  color: #d3d3d3;
-  text-align: center;
-  margin-top: 2rem;
-  padding-bottom: 20px;
+/* table for tablet view */
+@media (max-width: 991.98px) {
+  .w-25 {
+    width: 50% !important;
+  }
+}
+
+/* table for small screen view */
+@media (max-width: 575.98px) {
+  .w-25 {
+    width: 90% !important;
+  }
 }

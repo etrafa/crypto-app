@@ -9,3 +9,29 @@
   letter-spacing: 0.4px;
   line-height: 1;
 }
+
+.coin-positive-background {
+  display: inline-block;
+  width: 90px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #16c784;
+  color: #fff;
+  font-weight: bolder;
+  text-align: center;
+  margin-left: 1.2rem;
+  padding-top: 0.2rem;
+}
+
+.coin-negative-background {
+  display: inline-block;
+  width: 90px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #ea3943;
+  color: #fff;
+  font-weight: bolder;
+  text-align: center;
+  margin-left: 1.2rem;
+  padding-top: 0.2rem;
+}

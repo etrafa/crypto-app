@@ -29,10 +29,10 @@ const CryptoStats = () => {
 
   return (
     <>
-      <h4 className="text-center fs-2 fw-bold mb-4 mt-4 pb-3 text-muted">
+      <h4 className="text-center fs-2 fw-bold mb-4 mt-5 pt-5 pb-3 text-muted">
         Global Crypto Stats
       </h4>
-      <Table striped bordered hover className="w-50 mx-auto">
+      <Table striped bordered hover className="w-25 text-center mx-auto">
         <tbody>
           <tr>
             <th>Total Coins</th>
