@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Table, Button } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import millify from "millify";
+import { Helmet } from "react-helmet";
 
 //styling
 
@@ -31,6 +32,7 @@ const CryptoCurrencies = () => {
 
   return (
     <>
+      <Helmet title="Crpytocurrency - Live Chart" />
       <h4 className="text-center fs-2 fw-bold mb-4 mt-5 pt-5 pb-3 text-muted">
         Coins Share Live
       </h4>

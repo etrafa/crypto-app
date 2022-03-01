@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 import LineChart from "../components/chart/LineChart";
 import numeral from "numeral";
 
@@ -32,6 +33,9 @@ const Coins = () => {
 
   return (
     <Container>
+      <Helmet
+        title={`${coin.name} price today, ${coin.symbol} to USD live, marketcap and chart`}
+      />
       <Row className="text-center mx-auto mt-5 pt-5">
         <Col xs={2}>
           <img

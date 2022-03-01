@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Table, ProgressBar, Button } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 import millify from "millify";
 
 //styling
@@ -29,6 +30,7 @@ const Exchanges = () => {
 
   return (
     <>
+      <Helmet title="Exchange markets, marketcap and detailed informations..." />
       <h4 className="text-center fs-2 fw-bold mb-4 mt-5 pt-5 pb-3 text-muted">
         Exchange Lists
       </h4>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button, Card, Row, Container, Col } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 
 //styling
 import "./News.css";
@@ -29,6 +30,7 @@ const News = () => {
 
   return (
     <>
+      <Helmet title="Latest cryptocurrency news..." />
       <Container>
         <Row>
           <h4 className="text-center fs-2 fw-bold mb-4 mt-5 pt-5 pb-3 text-muted">
